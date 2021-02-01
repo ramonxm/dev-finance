@@ -27,7 +27,7 @@
                     <span>Entradas</span> 
                     <img src="./assets/income.svg" alt="Imagem de entrada">
                 </h3>
-                <p>R$5.000,00</p>    
+                <p>R$0,00</p>    
             </div>
 
             <div class="card">
@@ -35,7 +35,7 @@
                     <span>Saídas</span> 
                     <img src="./assets/expense.svg" alt="Imagem de saida">
                 </h3>
-                <p>R$2.000,00</p>
+                <p>R$0,00</p>
             </div>
         
             <div class="card total">
@@ -43,7 +43,7 @@
                     <span>Total</span>
                     <img src="./assets/total.svg" alt="Imagem de total">
                 </h3>
-                <p>R$3.000,00</p>
+                <p>R$0,00</p>
             </div>
 
         </section>
@@ -64,32 +64,6 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td class="description">Luz</td>
-                            <td class="expense">-R$ 500,00</td>
-                            <td class="date">23/01/2021</td>
-                            <td>
-                                <img src="./assets/minus.svg" alt="Remover Transação">
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td class="description">Criação Website</td>
-                            <td class="income">R$ 5.000,00</td>
-                            <td class="date">23/01/2021</td>
-                            <td>
-                                <img src="./assets/minus.svg" alt="Remover Transação">
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td class="description">Internet</td>
-                            <td class="expense">-R$ 200,00</td>
-                            <td class="date">23/01/2021</td>
-                            <td>
-                                <img src="./assets/minus.svg" alt="Remover Transação">
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
         </section>
@@ -98,51 +72,55 @@
     <div class="modal-overlay">
         <div class="modal">
             <div id="form">
-                <h2>Nova Transação</h2>
-                <form action="">
+                <h2 onclick="Modal.open()">Nova Transação</h2>
+                <form action="" onsubmit="Form.submit(event)">
                     <div class="input-group">
                         <label 
-                            class="sr-only"
-                            for="description">Descrição
-                        </label>
+                            class="sr-only" 
+                            for="description">Descrição</label>
                         <input
-                            type="text"
-                            id="description"
-                            name="description"
+                            type="text" 
+                            id="description" 
+                            name="description" 
                             placeholder="Descrição"
-                        />
+                            required
+                            
+                        />                           
                     </div>
                     <div class="input-group">
-                        <label 
-                            class="sr-only"
-                            for="amount">Valor
-                        </label>
-                        <input
+                        <label class="sr-only" 
+                        for="amount">Valor</label>
+                        
+                        <input 
+                            type="number" 
                             step="0.01"
-                            type="number"
                             id="amount"
                             name="amount"
-                            placeholder="0,00"
+                            placeholder="0.00"
+                            required
                         />
-                        <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais</small>
+                        <small class="help">
+                            Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais
+                        </small>
                     </div>
                     <div class="input-group">
                         <label 
-                            class="sr-only"
-                            for="date">Data
-                        </label>
+                            class="sr-only" 
+                            for="date">Data</label>
                         <input
-                            type="date"
-                            id="date"
+                            type="date" 
+                            id="date" 
                             name="date"
-                        />
+                            onload="setDate()"
+                            required
+                        />                           
                     </div>
-
                     <div class="input-group actions">
-                        <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
+                        <a href="#" class="button cancel" onclick="Modal.close()">Cancelar</a>
                         <button>Salvar</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
@@ -152,18 +130,7 @@
             <p>dev.finance$</p>
         </footer>
 
-        <script>
-            const Modal = {
-                open(){
-                    document.querySelector('.modal-overlay')
-                    .classList.add('active')
-                },
-                close(){
-                    document.querySelector('.modal-overlay')
-                    .classList.remove('active')
-
-                }
-            }
+        <script src="./scripts.js">
         </script>
 </body>
 </html>
